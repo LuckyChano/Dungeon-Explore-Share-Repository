@@ -59,7 +59,21 @@ public class Player : Entity, IDamageable, ICurable, IMortal
     {
         _playerControl.ArtificialUpdate();
 
-        _playerAnimation.IsWeaponEquiped = _isWeaponEquiped;
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            if (_isWeaponEquiped)
+            {
+                _isWeaponEquiped = false;
+                _playerAnimation.IsWeaponEquiped = false;
+                _playerWeapon.gameObject.SetActive(false);
+            }
+            else
+            {
+                _isWeaponEquiped = true;
+                _playerAnimation.IsWeaponEquiped = true;
+                _playerWeapon.gameObject.SetActive(true);
+            }
+        }
     }
 
     void FixedUpdate()
